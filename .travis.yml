@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rmbits/docker-frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true rmbits/docker-frontend npm run test
+
